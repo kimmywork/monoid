@@ -12,11 +12,7 @@ let spec_list =
     ("-l", Arg.Set_string language, "Set language type, default ocaml");
   ]
 
-let generators =
-  [
-    ("ocaml", (module Generator_ocaml : Generator.Gen));
-    ("python", (module Generator_python : Generator.Gen));
-  ]
+let generators = [ ("ocaml", (module Generator_ocaml : Generator.Gen)) ]
 
 let find_generator language =
   match List.find_opt (fst *> String.equal language) generators with
