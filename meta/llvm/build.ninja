@@ -1,0 +1,23 @@
+ldflags = -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -lSystem
+
+rule las
+    command = llvm-as $in -o $out
+
+rule llc
+    command = llc $in -o $out
+
+rule as
+    command = as $in -o $out
+
+rule ld
+    command = ld $ldflags $in -o $out
+
+build test.bc: las test.ll
+
+build test.s: llc test.bc
+
+build test.o: as test.s
+
+build test: ld test.o
+
+build all: phony test

@@ -1,0 +1,16 @@
+(library
+ (name infer)
+ (libraries string_lexer occam_ext)
+ (inline_tests
+  (deps
+   (glob_files example/*.inf)))
+ (preprocess
+  (pps ppx_inline_test ppx_deriving.show)))
+
+(menhir
+ (modules parser)
+ (flags "--code" "-v"))
+
+(ocamllex lexer)
+
+(documentation)

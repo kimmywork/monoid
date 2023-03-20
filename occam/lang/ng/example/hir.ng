@@ -1,0 +1,21 @@
+val m = 1;
+
+print (m);
+
+val (a, [b, c], d, ...e) = invoke();
+
+
+let x = 1 and y = 2 in x + y;
+
+val _ = x + 1;
+
+val () = print(1);
+
+val (x, y) = a + b;
+
+fun hello(x) {
+    print(x);
+}
+
+
+fun fn a b [c, d, e] (f, g) [h, ...i] = [a, b, c, d, e, f, g, h, sizeof(i)];

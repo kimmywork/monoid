@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        "ms-azuretools.vscode-docker",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "eamodio.gitlens",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-vscode-remote.remote-ssh",
+        "yzhang.markdown-all-in-one",
+        "maximedenes.vscoq",
+        "ocamllabs.ocaml-platform",
+        "evzen-wybitul.magic-racket",
+    ]
+}

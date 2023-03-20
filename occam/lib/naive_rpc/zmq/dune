@@ -1,0 +1,3 @@
+(library
+ (name naive_zmq)
+ (libraries zmq yojson naive_rpc))

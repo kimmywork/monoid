@@ -1,0 +1,8 @@
+"你好世界\n"
+"Hello world!\n"
+"Line with\nbreaks\n"
+"\x41\x42\x61\n"
+"\u{41}\u{42}\u{61}\n"
+""
+"\n"
+"More escapes\t\'\"\\\r\n"

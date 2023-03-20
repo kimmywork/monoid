@@ -1,0 +1,75 @@
+
+
+# Python related files
+.ipynb_checkpoints
+*.pyc
+__pycache__
+.pytest_cache
+.mypy_cache
+*.egg-info
+dist
+.coverage
+.venv
+
+# OCaml Related files
+_build
+.lia.cache
+duniverse/
+
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+
+# Miscellaneous data storages
+data/
+savedir/
+metastore_db/
+*.db
+*.sqlite
+*.parquet
+*.orc
+*.avro
+*.csv
+
+# Component workspaces
+spark-warehouse
+dask-worker-space/
+
+# Logs
+logs/
+*.log
+
+# Running files
+*.lock
+!Pipfile.lock
+*.dirlock
+
+
+mydask.png
+pywikibot.lwp
+
+# Caches
+
+
+# OS related files
+.DS_Store
+
+# Runtime files
+*.pid
+celerybeat-schedule
+
+bazel-bin
+bazel-out
+bazel-testlogs
+bazel-*
+
+
+# Ninja build files
+.ninja_log
+*.bc
+*.o
+a.out

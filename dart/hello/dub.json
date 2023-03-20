@@ -1,0 +1,12 @@
+{
+  "authors": ["Kimmy Liu"],
+  "copyright": "Copyright © 2022, Kimmy Liu",
+  "description": "A minimal D application.",
+  "license": "proprietary",
+  "targetType": "executable",
+  "targetName": "hello",
+  "name": "hello",
+  "dependencies": {
+    "dart:example": { "path": "../" }
+  }
+}

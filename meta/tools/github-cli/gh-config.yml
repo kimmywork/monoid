@@ -1,0 +1,7 @@
+# Merge this file with your ~/.config/gh/config.yml
+aliases:
+    diff: '!REPO=`gh repo view --json "url" -q ".url"` && gh pr create -f -R ${1:-$REPO}'
+    land: |-
+        !PR=`gh pr list -H $(git branch --no-color --show-current) --json number -q ".[] | .number"` && gh pr merge ${1:-$PR} -sd
+    sync: '!BRANCH=`git branch --no-color --show-current` && git checkout ${1:-master} && git pull -r && git checkout $BRANCH && git rebase ${1:-master}'
+    clean: '!git fetch --all --prune'

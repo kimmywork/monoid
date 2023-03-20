@@ -1,0 +1,3 @@
+(executable
+ (name foreign_hello_bin)
+ (libraries foreign_hello))

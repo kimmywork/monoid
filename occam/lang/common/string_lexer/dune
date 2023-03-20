@@ -1,0 +1,9 @@
+(library
+ (name string_lexer)
+ (inline_tests
+  (deps
+   (glob_files example/*.str)))
+ (preprocess
+  (pps ppx_inline_test ppx_deriving.show)))
+
+(ocamllex string_lexer)

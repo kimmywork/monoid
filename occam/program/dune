@@ -1,0 +1,6 @@
+(library
+ (name o99p)
+ (inline_tests)
+ (preprocess
+  (pps ppx_inline_test))
+ (modules o99p))

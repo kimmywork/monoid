@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "authors": ["Kimmy Liu"],
+  "copyright": "Copyright © 2022, Kimmy Liu",
+  "description": "A minimal D application.",
+  "targetName": "example",
+  "license": "proprietary"
+}

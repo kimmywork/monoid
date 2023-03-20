@@ -1,0 +1,6 @@
+(library
+ (inline_tests)
+ (name data_structure)
+ (libraries)
+ (preprocess
+  (pps ppx_deriving.iter ppx_deriving.map ppx_deriving.fold ppx_inline_test)))

@@ -1,0 +1,35 @@
+from .deps import Dep
+
+type Phone = {
+    area_code: string,
+    number: string,
+    extension: string
+}
+
+type Name = {
+    prefix: string?
+    first_name: string,
+    middle_name: string?,
+    last_name: string,
+    suffix: string?
+}
+
+type Concat = mutable {
+    @mutable
+    emails: [{ tag: string, email: string }],
+    phones: [{ tag: string, phone: union<string, Phone> }]
+}
+
+type Party = {
+    nickname: string,
+    names: {
+        legal: Name,
+        prefered: Name,
+        foreign: [{ tag: string, name: Name }]
+    },
+
+    contact: Contact,
+
+    tags: [string] @mutable,
+    extensions: any
+}

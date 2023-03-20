@@ -1,0 +1,10 @@
+{
+    "python.testing.pytestArgs": [
+        "play"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": true,
+}

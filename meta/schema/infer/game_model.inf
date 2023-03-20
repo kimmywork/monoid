@@ -1,0 +1,31 @@
+{
+    uniqid: str,
+    title: str,
+    aliases: [{
+        locale: str,
+        value: str
+    }],
+    rating: [{
+        rating: str,
+        system: union<'ESRB', 'CERO', 'OGAAW', 'USK', 'PEGI', 'GSRR'>
+    }],
+    reviews: [{
+        platform: str?,
+        reviewer: str,
+        link: str?,
+        score: union<int, float>,
+        base: union<int, float>
+    }],
+    releases: [{
+        region: [
+            union<'us', 'eu', 'jp', 'cn', 'hk', 'tw', 'ww'>
+        ],
+        platforms: [str],
+        date: str,
+        publisher: str?
+    }],
+    platforms: [str],
+    genres: [str],
+    developers: [str],
+    publishers: [str]
+}

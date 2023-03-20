@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://spec.kimleo.net/schema/python_deps.json",
+  "type": "array",
+  "title": "Python Dependencies Schema",
+  "description": "Internal Dependency Analysis Schema of Python Modules.",
+  "default": [],
+  "examples": [
+    [
+      {
+        "module": "common.grpc",
+        "imports": [
+          "common.grpc.server"
+        ],
+        "used_by": [
+          "boot.aio.server"
+        ],
+        "is_package": true,
+        "package": "common.grpc"
+      }
+    ]
+  ],
+  "items": {
+    "$ref": "#/definitions/module_descriptor"
+  },
+  "definitions": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^(([a-zA-Z_][a-zA-Z0-9_]*)(\\.[a-zA-Z_][a-zA-Z0-9_]*)*)?$",
+      "examples": [
+        "",
+        "common.values",
+        "common.values.foo",
+        "common.values.foo.bar"
+      ],
+      "default": ""
+    },
+    "module_descriptor": {
+      "type": "object",
+      "title": "Module Descriptor",
+      "description": "The module information.",
+      "default": {},
+      "examples": [
+        {
+          "module": "common.grpc",
+          "imports": [
+            "common.grpc.server"
+          ],
+          "used_by": [
+            "boot.aio.server"
+          ],
+          "is_package": true,
+          "package": "common.grpc"
+        }
+      ],
+      "required": [
+        "module",
+        "imports",
+        "used_by",
+        "is_package",
+        "package"
+      ],
+      "properties": {
+        "module": {
+          "title": "Module name",
+          "description": "A Python module name.",
+          "$ref": "#/definitions/identifier"
+        },
+        "imports": {
+          "type": "array",
+          "title": "import declarations",
+          "description": "A list of imported module names.",
+          "default": [],
+          "additionalItems": true,
+          "items": {
+            "$ref": "#/definitions/identifier"
+          }
+        },
+        "used_by": {
+          "type": "array",
+          "title": "Dependant modules",
+          "description": "A list of modules that use this module.",
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/identifier"
+          }
+        },
+        "is_package": {
+          "type": "boolean",
+          "title": "Package indicator",
+          "description": "Current module is a package.",
+          "default": false
+        },
+        "package": {
+          "title": "Package name",
+          "description": "The package contains this module, same as module if it is a package.",
+          "$ref": "#/definitions/identifier"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+
+service SomeService {
+    create(CreateRequest): CreateResponse
+    update(UpdateRequest): UpdateResponse
+    delete(DeleteRequest): DeleteResponse
+}

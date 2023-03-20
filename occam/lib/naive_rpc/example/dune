@@ -1,0 +1,13 @@
+(executable
+ (name echo)
+ (libraries zmq yojson naive_rpc naive_zmq)
+ (preprocess
+  (pps ppx_deriving_yojson)))
+
+(rule
+ (target echo_service.ml)
+ (deps
+  (:infer_gen %{lib-private:infer:bin/infer_gen.exe})
+  (:intf echo_service.inf))
+ (action
+  (run %{infer_gen} %{intf} -o %{target})))

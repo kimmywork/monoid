@@ -1,0 +1,7 @@
+type echo_message = {
+  message: string
+}
+
+service echo {
+  echo(echo_message): echo_message
+}

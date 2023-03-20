@@ -1,0 +1,3 @@
+(executables
+ (names infer_gen)
+ (libraries infer occam_ext))
