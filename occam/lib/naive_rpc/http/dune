@@ -1,0 +1,3 @@
+(library
+ (name naive_http)
+ (libraries cohttp-lwt-unix yojson naive_rpc))

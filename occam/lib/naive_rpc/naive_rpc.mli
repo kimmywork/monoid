@@ -1,4 +1,11 @@
 exception Not_implemented
+exception Unexpected_json
+
+val extract_json :
+  Yojson.Safe.t -> Yojson.Safe.t * Yojson.Safe.t * Yojson.Safe.t
+
+val to_error : string -> Yojson.Safe.t
+val to_result : Yojson.Safe.t option -> string -> string -> Yojson.Safe.t
 
 module type MESSAGE = sig
   type t
@@ -52,3 +59,10 @@ end
 
 module MakeServer (Svc : SERVICE_DESCRIPTOR) : SERVER
 module MakeClient (Svc : SERVICE_DESCRIPTOR) (Clt : CLIENT_CONNECTOR) : CLIENT
+
+val dispatch_service :
+  string ->
+  string ->
+  (module SERVER) list ->
+  Yojson.Safe.t ->
+  Yojson.Safe.t option

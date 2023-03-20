@@ -1,8 +1,24 @@
 (executable
- (name echo)
- (libraries zmq yojson naive_rpc naive_zmq)
+ (name echo_zmq)
+ (modules echo_zmq)
+ (libraries echo_service echo_service_impl naive_zmq))
+
+(executable
+ (name echo_http)
+ (modules echo_http)
+ (libraries echo_service echo_service_impl naive_http))
+
+(library
+ (name echo_service)
+ (modules echo_service)
+ (libraries naive_rpc yojson)
  (preprocess
   (pps ppx_deriving_yojson)))
+
+(library
+ (name echo_service_impl)
+ (modules echo_service_impl)
+ (libraries echo_service))
 
 (rule
  (target echo_service.ml)
