@@ -1,0 +1,3 @@
+(library
+ (name naive_inproc)
+ (libraries yojson naive_rpc))
