@@ -1,4 +1,34 @@
 exception Not_implemented
+exception Unexpected_json
+
+let extract_json (json : Yojson.Safe.t) =
+  let rec get_field assoc_list key =
+    match assoc_list with
+    | (k, v) :: _ when key = k -> v
+    | (_, _) :: rest -> get_field rest key
+    | [] -> raise Unexpected_json
+  in
+  match json with
+  | `Assoc assoc_list ->
+      ( get_field assoc_list "service",
+        get_field assoc_list "method",
+        get_field assoc_list "payload" )
+  | _ -> raise Unexpected_json
+
+let to_error message : Yojson.Safe.t =
+  `Assoc [ ("status", `String "error"); ("message", `String message) ]
+
+let to_result (result : Yojson.Safe.t option) svc mtd : Yojson.Safe.t =
+  match result with
+  | Some obj ->
+      `Assoc
+        [
+          ("service", `String svc);
+          ("method", `String mtd);
+          ("payload", obj);
+          ("status", `String "success");
+        ]
+  | None -> to_error "Unexpected result."
 
 module type MESSAGE = sig
   type t
@@ -74,3 +104,11 @@ struct
 
   let invoke = Clt.send Svc.name
 end
+
+let rec dispatch_service svc mtd svcs payload =
+  match svcs with
+  | s :: rest ->
+      let module Srv = (val s : SERVER) in
+      if Srv.Svc.name = svc then Srv.invoke mtd payload
+      else dispatch_service svc mtd rest payload
+  | [] -> None

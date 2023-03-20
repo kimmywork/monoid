@@ -8,16 +8,20 @@ depends: [
     "lwt_ppx"
     "ppx_inline_test" {build}
     "ppx_deriving"
-    "coq"
     "ppxlib"
-    "utop"
     "yojson"
     "ppx_deriving_yojson"
     "lsp"
+    "domainslib"
     "zmq"
     "zmq-lwt"
     "utop"
+    "alcotest-async"
+    "mirage-clock"
+    "duration"
+    "luv"
     "ocamlformat" {build}
+    "ocaml-lsp-server" {build}
 ]
 build: [
     "dune" "build" "-p" name "-j" jobs
