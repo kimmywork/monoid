@@ -8,6 +8,11 @@
  (modules echo_http)
  (libraries echo_service echo_service_impl naive_http))
 
+(executable
+ (name echo_inproc)
+ (modules echo_inproc)
+ (libraries echo_service echo_service_impl naive_inproc))
+
 (library
  (name echo_service)
  (modules echo_service)

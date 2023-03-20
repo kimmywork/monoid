@@ -20,6 +20,8 @@ depends: [
     "mirage-clock"
     "duration"
     "luv"
+    "cohttp-async"
+    "cohttp-lwt-unix"
     "ocamlformat" {build}
     "ocaml-lsp-server" {build}
 ]
