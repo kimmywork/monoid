@@ -24,6 +24,7 @@ depends: [
     "cohttp-lwt-unix"
     "ocamlformat" {build}
     "ocaml-lsp-server" {build}
+    "dune" {build}
 ]
 build: [
     "dune" "build" "-p" name "-j" jobs
