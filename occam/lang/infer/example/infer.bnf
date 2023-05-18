@@ -1,0 +1,29 @@
+<schema> ::= <type_definition>* <service_definition>?
+
+<type_definition> ::= "type" <identifier> "=" <type>
+
+<type> ::= <primitive_type> | <object_type> | <array_type> | <tuple_type> | <union_type> | <null_type>
+
+<primitive_type> ::= "string" | "number" | "boolean" | "any"
+
+<object_type> ::= "{" <property>* "}"
+
+<array_type> ::= <type> "[]"
+
+<tuple_type> ::= "(" <tuple_item>* ")"
+
+<tuple_item> ::= <type> ("," <type>)*
+
+<union_type> ::= <type> "|" <type>
+
+<null_type> ::= <primitive_type> "?"
+
+<property> ::= <identifier> ":" <type> ("," <identifier> ":" <type>)*
+
+<service_definition> ::= "service" <identifier> "{" <method_definition>* "}"
+
+<method_definition> ::= <identifier> "(" <parameter>* ")" ":" <type>
+
+<parameter> ::= <identifier> ":" <type> ("," <identifier> ":" <type>)*
+
+<identifier> ::= [A-Za-z_][A-Za-z0-9_]*

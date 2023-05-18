@@ -22,6 +22,7 @@ depends: [
     "luv"
     "cohttp-async"
     "cohttp-lwt-unix"
+    "owl"
     "ocamlformat" {build}
     "ocaml-lsp-server" {build}
     "dune" {build}

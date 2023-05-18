@@ -2,6 +2,13 @@ type echo_message = {
   message: string
 }
 
+
+type second_request = {
+  message: string,
+  age: int
+}
+
 service echo {
   echo(echo_message): echo_message
+  second(second_request): echo_message
 }

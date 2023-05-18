@@ -82,7 +82,7 @@ let within_signature ?(level = 0) =
   within_module_type ~level Snippet.signature_of
 
 let type_repr = function
-  | DirectType d -> d |> unwrap
+  | DirectType d -> d |> unwrap (* TODO: reference of defined types *)
   | StringType -> "string"
   | t ->
       G.unsupported (Printf.sprintf "unsupported type of %s" (show_type_body t))
@@ -243,18 +243,31 @@ let%test _ =
     gen
       (G.parse
          {|
-type echo_message = {
+type echo_request = {
+  message: string
+}
+
+type echo_response = {
   message: string
 }
 
 service echo {
-  echo(echo_message): echo_message
+  echo(echo_request): echo_response
 }
 |})
   in
   gened
   = {|open Naive_rpc
-module Echo_message = struct
+module Echo_request = struct
+  type t = {
+    message: string;
+  } [@@deriving yojson]
+
+  let from_json json = of_yojson json |> Result.to_option
+
+  let to_json = to_yojson
+end
+module Echo_response = struct
   type t = {
     message: string;
   } [@@deriving yojson]
@@ -264,8 +277,8 @@ module Echo_message = struct
   let to_json = to_yojson
 end
 module Echo_signature = struct
-  module Req = Echo_message
-  module Res = Echo_message
+  module Req = Echo_request
+  module Res = Echo_response
   let name = "echo"
 end
 module type Echo_stub = sig

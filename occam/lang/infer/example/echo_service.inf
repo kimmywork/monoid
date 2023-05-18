@@ -1,7 +1,11 @@
-type echo_message = {
+type echo_request = {
+  message: string
+}
+
+type echo_response = {
   message: string
 }
 
 service echo {
-  echo(echo_message): echo_message
+  echo(echo_request): echo_response
 }

@@ -12,8 +12,7 @@ let () =
   let module InProcConnector = InProcClientConnector () in
   let () = InProcConnector.connect "5555" in
   let module Echo = Echo_client (InProcConnector) in
-  let open Echo_message in
-  Echo.echo { message = "Hello" }
-  |> Option.map (fun { message } -> message)
+  Echo.second Second_request.{ message = "Hello"; age = 42 }
+  |> Option.map (fun Echo_message.{ message } -> message)
   |> Option.map print_endline |> Option.value ~default:();
   InProcConnector.close ()
